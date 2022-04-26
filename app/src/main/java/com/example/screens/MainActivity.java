@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button btn;
-    String msg = "Snygg är jag!!!";
+    String msg = "Snygg är du!!!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
