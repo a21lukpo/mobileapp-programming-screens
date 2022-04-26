@@ -1,42 +1,34 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+- Add a second activity
+  Jag la till en andra aktivitet genom att högerklicka på mappen där första aktiviteten ligger och sedan skapade en tom aktivitet.
+  
+- Add a button in the first activity that starts the second activity
+  Jag la till en knapp genom att gå in i "design" läget och sedan drog en knapp under constraint layouten som fanns. Därefter sattes constraints på knappen för att 
+  positionera den ordentligt. Dessa constraints sattes mot texten som fanns ovan med hjälp av ID.
+  
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+  app:layout_constraintTop_toBottomOf="@+id/btnText"
+  app:layout_constraintStart_toStartOf="@+id/btnText"
+  app:layout_constraintEnd_toEndOf="@+id/btnText"
+``` 
+
+- Add data to the intent bundle using extras
+  För att lägga till min data i den intent som skapades användes en putExtra. I denna putExtra skickades "string" samt meddelandet med den intent som fanns.
+  
 ```
+  intent.putExtra("String", msg);
+```
+- In the layout of in the second activity add least one widget to show data from the intent
+  För att kunna visa datan som skickas med den intent som finns används en textView. I förstahand hämtar texten ett ID från "textView". Därefter används setText
+  och hämtar datan från intent samt putExtra. Därefter visas texten som finns med i tidigare skapad intent.
+  
+```
+  TextView txt;
 
-Bilder läggs i samma mapp som markdown-filen.
-
-![](android.png)
-
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+  txt = findViewById(R.id.textView);
+  txt.setText(getIntent().getStringExtra("String"));
+``` 
+![](skarpdump1.png)
+![](skarpdump2.png)
